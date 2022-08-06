@@ -7,6 +7,8 @@ import { PageLayoutComponent } from './components/layouts/page-layout/page-layou
 import { AddUrlComponent } from './pages/url-shortner/add-url/add-url.component';
 import { UrlListingsComponent } from './pages/url-shortner/url-listings/url-listings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/layouts/header/header.component';
+import { MaterialModule } from './global/material/material.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UrlShortnerComponent,
     PageLayoutComponent,
     AddUrlComponent,
-    UrlListingsComponent
+    UrlListingsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
