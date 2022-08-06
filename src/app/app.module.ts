@@ -6,6 +6,7 @@ import { UrlShortnerComponent } from './pages/url-shortner/url-shortner.componen
 import { PageLayoutComponent } from './components/layouts/page-layout/page-layout.component';
 import { AddUrlComponent } from './pages/url-shortner/add-url/add-url.component';
 import { UrlListingsComponent } from './pages/url-shortner/url-listings/url-listings.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UrlListingsComponent } from './pages/url-shortner/url-listings/url-list
     UrlListingsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
