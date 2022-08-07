@@ -1,1 +1,34 @@
-<p>url-listings works!</p>
+<mat-card>
+  <mat-card-title>Available URIs</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="w-100">
+      <ng-container matColumnDef="fullUri">
+        <th mat-header-cell *matHeaderCellDef>Full URI</th>
+        <td mat-cell *matCellDef="let element" class="text-break">
+          {{ element.fullUri | slice: 0:100
+          }}<span *ngIf="element.fullUri.length > 100">...</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="shortUri">
+        <th mat-header-cell *matHeaderCellDef>Short URI</th>
+        <td mat-cell *matCellDef="let element" class="text-break">
+          <a [href]="element.fullUri">
+            {{ element.shortUri }}
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      #paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

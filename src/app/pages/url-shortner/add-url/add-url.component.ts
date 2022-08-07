@@ -12,7 +12,7 @@ export class AddUrlComponent implements OnInit {
 
   @Output('handleSubmit') handleSubmit = new EventEmitter<string>()
 
-  uri = new FormControl('', [Validators.required, Validators.pattern(URL_REGEXP)])
+  uri = new FormControl('', [Validators.pattern(URL_REGEXP)])
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class AddUrlComponent implements OnInit {
 
   handleFormSubmit() {
     this.handleSubmit.emit(this.uri.value)
-    this.uri.setValue("")
+    this.uri.reset()
   }
 
 }

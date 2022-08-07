@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IUriListing, IUriListingApi } from 'src/app/global/models/IUriListing';
 import { AlertService } from 'src/app/global/ui/alert/alert.service';
 import { UrlShortnerService } from 'src/app/services/url-shortner.service';
 
@@ -8,19 +9,43 @@ import { UrlShortnerService } from 'src/app/services/url-shortner.service';
   templateUrl: './url-shortner.component.html',
   styleUrls: ['./url-shortner.component.scss']
 })
-export class UrlShortnerComponent {
+export class UrlShortnerComponent implements OnInit {
+
+  uriListing: IUriListing[] = []
+
+  isLoading: boolean = false
 
   constructor(private uriShortnerService: UrlShortnerService, private alertService: AlertService) { }
 
+  ngOnInit() {
+    this.reload()
+  }
+
   handleSubmit(val: string) {
+    this.isLoading = true
     this.uriShortnerService.saveUri(val).subscribe({
-      next: (res) => { this.handleSubmitSuccess(res) },
-      error: (err) => { this.handleApiError(err) }
+      next: (res) => { this.handleSubmitSuccess(res); this.isLoading = false },
+      error: (err) => { this.handleApiError(err); this.isLoading = false },
     })
   }
 
   handleSubmitSuccess(res: any) {
     this.alertService.show('Url has been shortened and saved', 'success')
+    this.reload()
+  }
+
+  reload() {
+    this.isLoading = true
+    this.uriShortnerService.getUri().subscribe({
+      next: (res: IUriListingApi) => {
+        this.uriListing = res.data
+        this.isLoading = false
+      },
+      error: (err) => {
+        this.handleApiError(err)
+        this.isLoading = false
+      },
+    })
   }
 
   handleApiError(err: HttpErrorResponse) {

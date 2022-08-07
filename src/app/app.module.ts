@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/layouts/header/header.component';
 import { MaterialModule } from './global/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './global/ui/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageLayoutComponent,
     AddUrlComponent,
     UrlListingsComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

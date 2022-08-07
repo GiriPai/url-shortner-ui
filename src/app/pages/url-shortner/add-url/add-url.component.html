@@ -8,10 +8,9 @@
           type="url"
           matInput
           [formControl]="uri"
-          placeholder="https://www.lowes.com/pl/Fitness-exercise-equipment-Sports-fitness/4294546188"
+          placeholder="Eg. https://www.lowes.com/pl/Fitness-exercise-equipment-Sports-fitness/4294546188"
         />
         <mat-error *ngIf="uri.touched && uri.invalid">
-          <span *ngIf="uri.hasError('required')">This field is required</span>
           <span *ngIf="uri.hasError('pattern')">Invalid URL format</span>
         </mat-error>
       </mat-form-field>
@@ -20,7 +19,7 @@
         type="submit"
         color="primary"
         class="col-md-auto"
-        [disabled]="uri.invalid"
+        [disabled]="!uri.value || uri.invalid"
       >
         Shrink and Save
       </button>

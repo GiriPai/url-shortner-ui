@@ -1,1 +1,19 @@
-<app-add-url (handleSubmit)="handleSubmit($event)"></app-add-url>
+<div class="container">
+  <div class="row m-3">
+    <app-add-url (handleSubmit)="handleSubmit($event)"></app-add-url>
+  </div>
+  <ng-container *ngIf="!isLoading; else loader">
+    <div class="row m-3" *ngIf="uriListing.length > 0; else noResults">
+      <app-url-listings [uriListing]="uriListing"> </app-url-listings>
+    </div>
+    <ng-template #noResults>
+      <div class="text-center">No Results Found. Start shortening URI.</div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loader>
+    <div class="row">
+      <app-spinner class="d-flex justify-content-center"></app-spinner>
+    </div>
+  </ng-template>
+</div>

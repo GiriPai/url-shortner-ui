@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { prepareQueryString } from '../utils/QueryStringParameters.util';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ApiHttpService {
     private http: HttpClient
   ) { }
 
-  public get(url: string, options?: any) {
+  public get(url: string, options?: any): Observable<any> {
     if (options) {
       url = `${url}?${prepareQueryString(options)}`
     }
