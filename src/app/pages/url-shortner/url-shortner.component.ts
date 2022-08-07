@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IUriListing, IUriListingApi } from 'src/app/global/models/IUriListing';
-import { AlertService } from 'src/app/global/ui/alert/alert.service';
+import { AlertService } from 'src/app/components/alert/alert.service';
 import { UrlShortnerService } from 'src/app/services/url-shortner.service';
 
 @Component({
