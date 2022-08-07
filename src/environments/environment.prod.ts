@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: "your api endpoint"
+  api: "https://uri-shortner-api.herokuapp.com"
 };
