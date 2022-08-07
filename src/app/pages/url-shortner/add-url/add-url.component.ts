@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { URL_REGEXP } from 'src/app/global/constants/constants';
 
 @Component({
   selector: 'app-add-url',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUrlComponent implements OnInit {
 
+  uri = new FormControl('', [Validators.required, Validators.pattern(URL_REGEXP)])
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleFormSubmit() {
+    console.log(this.uri.value)
   }
 
 }

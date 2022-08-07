@@ -1,1 +1,29 @@
-<p>add-url works!</p>
+<mat-card>
+  <mat-card-title>Shrink</mat-card-title>
+  <mat-card-content class="container">
+    <form class="row" (ngSubmit)="handleFormSubmit()">
+      <mat-form-field class="w-100 col p-2">
+        <mat-label>Enter url to shorten</mat-label>
+        <input
+          type="url"
+          matInput
+          [formControl]="uri"
+          placeholder="https://www.lowes.com/pl/Fitness-exercise-equipment-Sports-fitness/4294546188"
+        />
+        <mat-error *ngIf="uri.touched && uri.invalid">
+          <span *ngIf="uri.hasError('required')">This field is required</span>
+          <span *ngIf="uri.hasError('pattern')">Invalid URL format</span>
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-button
+        type="submit"
+        color="primary"
+        class="col-md-auto"
+        [disabled]="uri.invalid"
+      >
+        Shrink and Save
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
