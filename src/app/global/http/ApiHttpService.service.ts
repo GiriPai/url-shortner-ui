@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { prepareQueryString } from '../utils/QueryStringParameters.util';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiHttpService {
   constructor(
     private http: HttpClient

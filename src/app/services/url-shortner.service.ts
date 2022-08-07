@@ -8,13 +8,13 @@ import { IOptions } from '../global/models/IApiOptions';
 })
 export class UrlShortnerService {
 
-  constructor(private http: ApiHttpService, private endpoints: ApiEndpoints) { }
+  constructor(private api: ApiHttpService, private endpoints: ApiEndpoints) { }
 
   saveUri(uri: string) {
-    return this.http.post(this.endpoints.URI_SHORTNER_RESOURCE, { fullUri: uri })
+    return this.api.post(this.endpoints.URI_SHORTNER_RESOURCE, { fullUri: uri })
   }
 
   getUri(options?: IOptions) {
-    return this.http.get(this.endpoints.URI_SHORTNER_RESOURCE, options)
+    return this.api.get(this.endpoints.URI_SHORTNER_RESOURCE, options)
   }
 }

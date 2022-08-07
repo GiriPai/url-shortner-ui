@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { URL_REGEXP } from 'src/app/global/constants/constants';
+
 
 @Component({
   selector: 'app-add-url',
@@ -8,6 +9,8 @@ import { URL_REGEXP } from 'src/app/global/constants/constants';
   styleUrls: ['./add-url.component.scss']
 })
 export class AddUrlComponent implements OnInit {
+
+  @Output('handleSubmit') handleSubmit = new EventEmitter<string>()
 
   uri = new FormControl('', [Validators.required, Validators.pattern(URL_REGEXP)])
 
@@ -17,7 +20,8 @@ export class AddUrlComponent implements OnInit {
   }
 
   handleFormSubmit() {
-    console.log(this.uri.value)
+    this.handleSubmit.emit(this.uri.value)
+    this.uri.setValue("")
   }
 
 }
